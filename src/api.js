@@ -7,9 +7,8 @@ export default {
             console.log('response');
             console.log(res);
             return res.data.user
-        }).catch(()=>{
-            console.log('you') 
-        })
-        
+        }),
+        signup: user =>
+        axios.post('/api/users', {user}).then(res=>res.data.user)
     }
 };
