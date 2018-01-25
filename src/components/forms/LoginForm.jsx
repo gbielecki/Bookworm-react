@@ -16,9 +16,11 @@ class LoginForm extends React.Component {
         errors: {}
     };
 
-    onChange = e => this.setState({
+    onChange = e => {
+        this.setState({
         data: { ...this.state.data, [e.target.name]: e.target.value }
     });
+}
 
     onSubmit = (e) => {
         e.preventDefault();
@@ -26,7 +28,7 @@ class LoginForm extends React.Component {
         this.setState({ errors });   
         if(Object.keys(errors).length === 0) {
             this.setState({loading: true});
-            console.log(this.props);
+            console.log(this.state);
             this.props.submit(this.state.data)
             .catch(err=> this.setState({errors: err.response.data.errors, loading: false}))
         }
